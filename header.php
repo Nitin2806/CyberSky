@@ -12,7 +12,9 @@
     <body>
         <nav>
             <div class="container">
-                <img src="img/cybersky.png">
+                <div class="logo">
+                    <img src="images/logo2.png">
+                </div>
                 <ul>          
                     <li><a href="index.php">Home</a></li>
                     <li><a href="cart.php">Cart</a></li>

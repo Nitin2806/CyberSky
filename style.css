@@ -54,7 +54,7 @@ h3 {
 }
 
 .heading-dark {
-    color: #0f0e17;
+    color: #0d0d0d;
 }
 
 .heading-light {
@@ -62,13 +62,26 @@ h3 {
 }
 
 .heading-color {
-    color: #ff8906;
+    color: #ff8e3c;
 }
 
+.logo img
+{
+    width: 240px;
+}
+
+
+
 nav {
-    background-color: #0f0e17;
+    background-color: #0d0d0d;
     text-align: center;
     padding: 40px;
+}
+
+nav .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 nav ul li {
@@ -76,16 +89,16 @@ nav ul li {
 }
 
 nav ul li:hover {
-    background-color: #ff8906;
+    background-color: #ff8e3c;
 }
 
 nav ul li:hover a {
-    color: #0f0e17;
+    color: #0d0d0d;
 }
 
 nav a {
     display: inline-block;
-    padding: 16px 50px;
+    padding: 16px 30px;
     color: #ffffff;
     font-weight: bold;
     font-size: 16px;
@@ -172,7 +185,7 @@ nav a {
 
 
 .area-dark {
-    background-color: #0f0e17;
+    background-color: #0d0d0d;
     padding: 60px 0px;
     width: 100%;
     float: left;
@@ -186,7 +199,7 @@ nav a {
 }
 
 .box-dark {
-    background-color: #0f0e17;
+    background-color: #0d0d0d;
     box-sizing: border-box;
     float: left;
 }
@@ -222,11 +235,11 @@ nav a {
 
 .box-light p,
 .area-light p {
-    color: #0f0e17;
+    color: #0d0d0d;
 }
 
 .box-light h3 {
-    background-color: #ff8906;
+    background-color: #ff8e3c;
 }
 
 label {
@@ -262,7 +275,7 @@ input[type="submit"] {
 }
 
 .btn {
-    background-color: rgba(255, 137, 6, 1);
+    background-color: #ff8e3c;
     color: #000;
 
     text-transform: uppercase;
@@ -297,7 +310,7 @@ input[type="submit"] {
 }
 
 .btn-white {
-    color:#0f0e17;
+    color:#0d0d0d;
     background-color:#e1e2e9;
     text-transform: uppercase;
     cursor: pointer;
@@ -314,7 +327,7 @@ input[type="submit"] {
 }
 
 main {
-    min-height: 400px;
+    min-height: 500px;
 }
 
 .hidden
@@ -325,8 +338,8 @@ main {
 .hero
 {
     width: 100%;
-    background: #ff8906;
-    color: #0f0e17;
+    background: #eff0f3;
+    color: #0d0d0d;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -339,5 +352,17 @@ main {
 footer 
 {
     font-weight: bold;
+    background-color: #0d0d0d;
     text-align: center;
+    padding: 40px;
+}
+
+footer p
+{
+   color:#eff0f3;
+}
+
+a:hover {
+    color: #ff8e3c;
+    text-decoration: none;
 }
