@@ -14,8 +14,9 @@
             <div class="container">
                 <img src="logo.jpeg">
                 <ul>          
-                    <li><a href="index.php">Dashboard</a></li>
-                    <li><a href="create.php">Create Order</a></li>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="cart.php">Cart</a></li>
+                    <li><a href="login.php">Login</a></li>
                 </ul>
             </div>
         </nav>
