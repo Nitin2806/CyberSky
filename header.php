@@ -12,7 +12,7 @@
     <body>
         <nav>
             <div class="container">
-                <img src="logo.jpeg">
+                <img src="img/cybersky.png">
                 <ul>          
                     <li><a href="index.php">Dashboard</a></li>
                     <li><a href="create.php">Create Order</a></li>
