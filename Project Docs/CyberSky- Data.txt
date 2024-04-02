@@ -1,0 +1,10 @@
+User-> UserID, Username, FName,LName, Email, AddressID, Phone Number, Password
+
+Address->  AddressID, ALine1, ALine2, City, Province,Postal Code
+
+Product-> Product ID,  brandID, PName, PDesc, Pprice
+
+Brand - > BrandID, BName
+
+Cart -> CartID, userID, PID,Quantity
+
