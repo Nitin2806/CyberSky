@@ -12,9 +12,9 @@
         <nav>
             <div class="container">
                 <div class="logo">
-                    <img src="images/logo2.png">
+                    <img src="images/logo2.png" alt="logo">
                 </div>
-                <ul>          
+                <ul>
                     <li><a href="index.php">Home</a></li>
                     <li><a href="cart.php">Cart</a></li>
                     <li><a href="login.php">Login</a></li>
