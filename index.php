@@ -17,6 +17,12 @@
             {
                 if(!empty($_POST["search"]))
                 $search=$_POST["search"];
+                $userId = 1; 
+                $productId = $_POST['product_id'];
+                $quantity = 1; 
+            
+                $cartObj = new Cart($conn);
+                $cartObj->addToCart($userId, $productId, $quantity);
             }
 
             ?>
