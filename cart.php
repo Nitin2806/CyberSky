@@ -10,36 +10,26 @@ $userId=1
         <div class="container cart-area">
             <div class="row">
                 <div class="col">
-                    <h2>Your Items</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
                    
                     <?php
                     $getAllCartItem=[];
 
-                    $cartItem = new GetCartItem($conn);
+                    $cartItem = new Cart($conn);
                     $getAllCartItem = $cartItem->getCart($userId);
-                 
-                    print_r($getAllCartItem);
-                    $getProductsInfo = new GetCartItem($conn);
+              
                     
                     foreach($getAllCartItem as $getProduct){
-                        return $getProductsInfo->getAllProductsUsingID($getProduct["product_id"]);
+                       $item= $cartItem->getAllProductsUsingID($getProduct["product_id"]);
+                       echo '<div class="card item">';
+                       echo '<img class="card-img-top item-image" alt="' . $item[0]['product_name'] . '" src="images/' . $item[0]['product_image'] . '">';
+                       echo '<div class="card-body">';
+                       echo '<h5 class="card-title item-name">' . $item[0]['product_name'] . '</h5>';
+                       echo '<h6 class="card-subtitle mb-2 text-muted item-price">$' . $item[0]['product_price'] . '</h6>';
+                       echo '<p class="card-text item-desc">' . $item[0]['product_desc'] . '</p>';
+                       echo '<a href="#" class="btn btn-pink">Remove From Cart</a>';
+                       echo '</div>';
+                       echo '</div>';
                      }
-
-                    foreach ($getAllCartItem as $item) {
-                        echo '<div class="card item">';
-                        echo '<img class="card-img-top item-image" alt="' . $item['product_name'] . '" src="images/' . $item['product_image'] . '">';
-                        echo '<div class="card-body">';
-                        echo '<h5 class="card-title item-name">' . $item['product_name'] . '</h5>';
-                        echo '<h6 class="card-subtitle mb-2 text-muted item-price">$' . $item['product_price'] . '</h6>';
-                        echo '<p class="card-text item-desc">' . $item['product_desc'] . '</p>';
-                        echo '<a href="#" class="btn btn-pink">Remove From Cart</a>';
-                        echo '</div>';
-                        echo '</div>';
-                    }
                     ?>
                 </div>
             </div>

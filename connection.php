@@ -47,6 +47,25 @@ class Cart {
         $stmt->bind_param("iii", $userId, $productId, $quantity);
         return $stmt->execute();
     }
+    public function getAllProductsUsingID($productId) {
+        $sql = "SELECT * FROM product WHERE product_id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("i", $productId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $products = $result->fetch_all(MYSQLI_ASSOC);
+        $result->free();
+        $stmt->close();
+        return $products;
+    }
+    public function getCart($userId)  {
+        $sql = "SELECT * FROM cart  WHERE user_id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 
 }
 
@@ -64,52 +83,6 @@ class Product {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 }
-class ProductUsingID {
-    private $conn;
-
-    public function __construct($db) {
-        $this->conn = $db;
-    }
-
-    public function getAllProductsUsingID($productId) {
-        $sql = "SELECT * FROM product WHERE product_id = ?";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("i", $productId);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        
-        // Fetch all rows as an associative array
-        $products = $result->fetch_all(MYSQLI_ASSOC);
-
-        // Free the result set
-        $result->free();
-
-        // Close the statement
-        $stmt->close();
-
-        return $products;
-    }
-}
-
-//fetch cart based on user id
-
-class GetCartItem extends ProductUsingID {
-    private $conn;
-
-    public function __construct($db) {
-        $this->conn = $db;
-    }
-
-    public function getCart($userId)  {
-        $sql = "SELECT * FROM cart  WHERE user_id = ?";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("i", $userId);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-}
-
 
 $userObj = new User($conn);
 $cartObj = new Cart($conn);
