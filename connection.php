@@ -41,6 +41,7 @@ class Cart {
     }
 
     public function addToCart($userId, $productId, $quantity) {
+        echo $userId, $productId,$quantity;
         $sql = "INSERT INTO cart (user_id, product_id, quantity) VALUES (?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("iii", $userId, $productId, $quantity);
@@ -63,17 +64,43 @@ class Product {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 }
-
-//fetch cart based on user id
-
-class GetCartItem {
+class ProductUsingID {
     private $conn;
 
     public function __construct($db) {
         $this->conn = $db;
     }
 
-    public function getCart($userId) {
+    public function getAllProductsUsingID($productId) {
+        $sql = "SELECT * FROM product WHERE product_id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("i", $productId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        // Fetch all rows as an associative array
+        $products = $result->fetch_all(MYSQLI_ASSOC);
+
+        // Free the result set
+        $result->free();
+
+        // Close the statement
+        $stmt->close();
+
+        return $products;
+    }
+}
+
+//fetch cart based on user id
+
+class GetCartItem extends ProductUsingID {
+    private $conn;
+
+    public function __construct($db) {
+        $this->conn = $db;
+    }
+
+    public function getCart($userId)  {
         $sql = "SELECT * FROM cart  WHERE user_id = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("i", $userId);
@@ -86,8 +113,5 @@ class GetCartItem {
 
 $userObj = new User($conn);
 $cartObj = new Cart($conn);
-
-
-// Close connection
 
 ?>

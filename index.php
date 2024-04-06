@@ -17,9 +17,9 @@
             {
                 if(!empty($_POST["search"]))
                 $search=$_POST["search"];
-                $userId = 1; 
+                $userId = 1;
                 $productId = $_POST['product_id'];
-                $quantity = 1; 
+                $quantity = 1;
             
                 $cartObj = new Cart($conn);
                 $cartObj->addToCart($userId, $productId, $quantity);
@@ -48,7 +48,10 @@
                         <h5 class="card-title item-name"><?php  echo $product['product_name'] ?></h5>
                         <h6 class="card-subtitle mb-2 text-muted item-price">$<?php echo  $product['product_price'] ?></h6>
                         <p class="card-text item-desc"><?php echo $product['product_desc'] ?></p>
-                        <a href="#" class="btn-orange">Add to Cart</a>
+                        <form method="post" action="index.php">
+                            <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
+                            <button type="submit" class="btn-orange" name="add_to_cart">Add to Cart</button>
+                        </form>
                         <a href="#" class="btn-pink">Remove From Cart</a>
                     </div>
                 </div>

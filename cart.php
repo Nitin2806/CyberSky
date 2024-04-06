@@ -18,9 +18,16 @@ $userId=1
                    
                     <?php
                     $getAllCartItem=[];
-                    
+
                     $cartItem = new GetCartItem($conn);
                     $getAllCartItem = $cartItem->getCart($userId);
+                 
+                    print_r($getAllCartItem);
+                    $getProductsInfo = new GetCartItem($conn);
+                    
+                    foreach($getAllCartItem as $getProduct){
+                        return $getProductsInfo->getAllProductsUsingID($getProduct["product_id"]);
+                     }
 
                     foreach ($getAllCartItem as $item) {
                         echo '<div class="card item">';
