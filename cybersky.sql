@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 05, 2024 at 09:34 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Apr 06, 2024 at 08:22 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,6 +36,13 @@ CREATE TABLE `address` (
   `postal_code` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `address`
+--
+
+INSERT INTO `address` (`address_id`, `line1`, `line2`, `city`, `province`, `postal_code`) VALUES
+(1, 'Vanier Dr', NULL, 'Kitchener', 'Ontario', 'N2C 2J4');
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +56,13 @@ CREATE TABLE `cart` (
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cart_id`, `user_id`, `product_id`, `quantity`) VALUES
+(1, 1, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -59,8 +73,22 @@ CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
   `product_name` varchar(100) NOT NULL,
   `product_desc` text NOT NULL,
-  `product_price` float NOT NULL
+  `product_price` float NOT NULL,
+  `product_image` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`product_id`, `product_name`, `product_desc`, `product_price`, `product_image`) VALUES
+(1, 'Samsung Guru', 'Samsung', 50, 'guru.jpg'),
+(2, 'Apple iPhone 6', 'iPhone ', 90, 'iphone6.jpg'),
+(3, 'Motorola Edge 30', 'Motorola', 300, 'edge30.jpg'),
+(4, 'iPhone 10', 'iPhone', 190, 'iphone10.jpg'),
+(5, 'iPhone 11', 'iPhone', 1333, 'iphone11.jpg'),
+(6, 'Samsung Galaxy S25', 'Samsung', 2000, 'samsungs25.jpg'),
+(7, 'Samsung M33', 'Samsung', 900, 'samsungm33.jpg');
 
 -- --------------------------------------------------------
 
@@ -78,6 +106,13 @@ CREATE TABLE `user` (
   `phone` varchar(20) NOT NULL,
   `address_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `username`, `password`, `first_name`, `last_name`, `email`, `phone`, `address_id`) VALUES
+(1, 'nitin28', 'nitin', 'Nitin', 'Mishra', 'mnitin2311@gmail.com', '5197818342', 1);
 
 --
 -- Indexes for dumped tables
@@ -115,25 +150,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
