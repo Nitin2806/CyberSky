@@ -302,6 +302,7 @@ input[type="submit"] {
 
 main {
     min-height: 500px;
+    width: 100%;
 }
 
 .hidden
@@ -421,4 +422,107 @@ a:hover {
 .form-area
 {
     max-width: 500px;
+}
+
+.cart-area
+{
+    max-width: 1200px;
+    width: 100%;
+}
+
+.cart-table 
+{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: #eff0f3;
+    color: #0d0d0d;
+}
+
+.cart-header,
+.cart-item,
+.cart-total 
+{
+    display: flex;
+    justify-content:space-between ;
+}
+
+.cart-item
+{
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+}
+
+.cart-col
+{
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-col input, .cart-col button
+{
+    margin: 0px;
+}
+
+.cart-col-name
+{
+    width: 30%;
+    justify-content: flex-start;
+}
+
+.cart-col-price,.cart-col-quantity,.cart-col-subtotal
+{
+    width: 10%;
+}
+
+.cart-col-action
+{
+    width: 20%;
+}
+.cart-header
+{
+    background-color: #0d0d0d;
+    color: #fff;
+}
+
+.cart-total, .cart-header 
+{
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.button-field {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.details-form
+{
+    max-width:1200px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 50px 20px;
+    border: 1px solid #eff0f3;
+}
+
+.details-form .form-field
+{
+    width: 45%;
+}
+
+.details-form .button-field
+{
+    width: 100%;
+}
+
+.alert
+{
+    color: #ffffff;
+    background-color: #d9376e;
 }

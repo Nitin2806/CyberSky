@@ -1,3 +1,11 @@
+<?php 
+session_start();
+if(isset($_SESSION["userId"]))
+$userId=$_SESSION["userId"];
+else
+$userId=0;
+include('connection.php'); 
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,18 +15,30 @@
         <link rel="stylesheet" href="style.css" />
         <title>Cybersky</title>
     </head>
-
     <body>
         <nav>
             <div class="container">
                 <div class="logo">
-                    <img src="images/logo2.png" alt="logo">
+                    <img src="images/logo2.png">
                 </div>
-                <ul>
+                <ul>          
                     <li><a href="index.php">Home</a></li>
+                    <?php
+                    if($userId!=0)
+                    {
+                    ?>
                     <li><a href="cart.php">Cart</a></li>
+                    <li><a href="account.php">Account</a></li>
+                    <li><a href="login.php?logout=true">Logout</a></li>
+                    <?php
+                    }
+                    else
+                    {
+                    ?>
                     <li><a href="login.php">Login</a></li>
-                    <li><a href="logout.php">Logout</a></li>
+                    <?php
+                    }
+                  ?>
                 </ul>
             </div>
         </nav>

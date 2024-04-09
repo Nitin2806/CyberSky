@@ -29,6 +29,43 @@ class User {
         return $result->fetch_assoc();
     }
 
+    public function addUser($username,$password,$firstname,$lastname,$email,$phone)
+    {
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO user(username, password, firstname, lastname, email, phone) VALUES (?,?,?,?,?,?)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("ssssss", $username,$password,$firstname,$lastname,$email,$phone);
+        $stmt->execute();
+        if ($stmt->affected_rows > 0) 
+        {
+            return 'success';
+        }
+    }
+
+    public function checkUser($username,$password)
+    {
+        $sql = "SELECT * FROM user WHERE username = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if($result) 
+        {
+            $res = $result->fetch_assoc();
+            if (password_verify($password,  $res['password'])) 
+            {
+                return $res['user_id'];
+            } 
+            else 
+            {
+                return 0;
+            }
+        } 
+        else 
+        {   
+            return 0;
+        }
+    }
    
 }
 
@@ -41,7 +78,6 @@ class Cart {
     }
 
     public function addToCart($userId, $productId, $quantity) {
-        echo $userId, $productId,$quantity;
         $sql = "INSERT INTO cart (user_id, product_id, quantity) VALUES (?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("iii", $userId, $productId, $quantity);
@@ -66,6 +102,28 @@ class Cart {
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+    public function updateCart($cartId,$quantity)  
+    {
+        $sql = "UPDATE cart SET quantity = ? WHERE cart_id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("ii", $quantity, $cartId);
+        $stmt->execute();
+        if ($stmt->affected_rows > 0) 
+        {
+            return '<div class="alert">Cart Updated!</div>';
+        }
+    }
+    public function removeCart($cartId) 
+    {
+        $sql = "DELETE FROM cart WHERE cart_id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("i",$cartId);
+        $stmt->execute();
+        if ($stmt->affected_rows > 0) 
+        {
+            return '<div class="alert">Item Removed from Cart!</div>';
+        }
+    }
 
 }
 
@@ -82,9 +140,22 @@ class Product {
         $result = $this->conn->query($sql);
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getSearchProducts($search) {
+        $search = '%'.$search.'%';
+        $sql = "SELECT * FROM product WHERE product_name LIKE ? OR product_desc LIKE ? OR product_price LIKE ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("sss", $search,$search,$search);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 
 $userObj = new User($conn);
 $cartObj = new Cart($conn);
+
+
+
 
 ?>
