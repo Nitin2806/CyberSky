@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2024 at 08:22 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Apr 14, 2024 at 06:03 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -61,7 +61,10 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`cart_id`, `user_id`, `product_id`, `quantity`) VALUES
-(1, 1, 1, 1);
+(5, 6, 7, 2),
+(23, 7, 7, 6),
+(24, 7, 6, 2),
+(26, 7, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -100,8 +103,8 @@ CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `first_name` varchar(100) NOT NULL,
-  `last_name` varchar(100) NOT NULL,
+  `firstname` varchar(100) NOT NULL,
+  `lastname` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `phone` varchar(20) NOT NULL,
   `address_id` int(11) DEFAULT NULL
@@ -111,8 +114,10 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `username`, `password`, `first_name`, `last_name`, `email`, `phone`, `address_id`) VALUES
-(1, 'nitin28', 'nitin', 'Nitin', 'Mishra', 'mnitin2311@gmail.com', '5197818342', 1);
+INSERT INTO `user` (`user_id`, `username`, `password`, `firstname`, `lastname`, `email`, `phone`, `address_id`) VALUES
+(1, 'nitin28', 'nitin', 'Nitin', 'Mishra', 'mnitin2311@gmail.com', '5197818342', 1),
+(6, 'admin', '$2y$10$yCajecsQGfOgStT87f8yg.fnujX/7rik1C.QOZARte/QiVU6SKAXa', 'Navin', 'Shaji Thomas', 'Nshajithomas8212@conestogac.on.ca', '4444442222', NULL),
+(7, 'nvn', '$2y$10$KiR/0frAYpxUi483MlznlOgVPSmlKBEdjQp75zfMrZg38HomtZhce', 'nvn', 'st', '13navin@gmail.com', '1234567890', NULL);
 
 --
 -- Indexes for dumped tables
@@ -156,7 +161,7 @@ ALTER TABLE `address`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -168,7 +173,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
