@@ -32,6 +32,10 @@
     {
         $message = '<div class="alert">No such user or wrong password!</div>';
     } 
+    if (isset($_GET['message']) && $_GET['message'] == 'deleted') 
+    {
+        $message = '<div class="alert">User Account has been deleted</div>';
+    }
     else
     $message='';
 
@@ -179,7 +183,7 @@
 
         if(empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL))
         {
-            $email_error="Enter a valid email";
+            $email_error="Enter a valid email address";
             $valid=0;
         }
 
@@ -216,43 +220,43 @@
                 </div>
 
                 <div class="form-field">
-                    <label for="username">Username:</label>
+                    <label for="username">Username:*</label>
                     <input type="text" id="username" name="username" class="form-control" value="<?php echo $username; ?>">
                     <div class="field-error"><?php echo $username_error; ?></div>
                 </div>
 
                 <div class="form-field">
-                    <label for="password">Password:</label>
+                    <label for="password">Password:*</label>
                     <input type="password" id="password" name="password" class="form-control" value="<?php echo $password; ?>">
                     <div class="field-error"><?php echo $password_error; ?></div>
                 </div>
 
                 <div class="form-field">
-                    <label for="confirm_password">Confirm Password:</label>
+                    <label for="confirm_password">Confirm Password:*</label>
                     <input type="password" id="confirm_password" name="confirm_password" class="form-control" value="<?php echo $confirm; ?>">
                     <div class="field-error"><?php echo $confirm_error; ?></div>
                 </div>
 
                 <div class="form-field">
-                    <label for="firstname">First Name:</label>
+                    <label for="firstname">First Name:*</label>
                     <input type="text" id="firstname" name="firstname" class="form-control" value="<?php echo $firstname; ?>">
                     <div class="field-error"><?php echo $firstname_error; ?></div>
                 </div>
 
                 <div class="form-field">
-                    <label for="lastname">Last Name:</label>
+                    <label for="lastname">Last Name:*</label>
                     <input type="text" id="lastname" name="lastname" class="form-control" value="<?php echo $lastname; ?>">
                     <div class="field-error"><?php echo $lastname_error; ?></div>
                 </div>
 
                 <div class="form-field">
-                    <label for="email">Email:</label>
+                    <label for="email">Email:*</label>
                     <input type="text" id="email" name="email" class="form-control" value="<?php echo $email; ?>">
                     <div class="field-error"><?php echo $email_error; ?></div>
                 </div>
 
                 <div class="form-field">
-                    <label for="phone">Phone:</label>
+                    <label for="phone">Phone:*</label>
                     <input type="text" id="phone" name="phone" class="form-control" value="<?php echo $phone; ?>">
                     <div class="field-error"><?php echo $phone_error; ?></div>
                 </div>

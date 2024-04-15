@@ -69,7 +69,7 @@ include('header.php');
                         <div class="cart-col cart-col-name"><?php echo $item[0]['product_name']; ?></div>
                         <div class="cart-col cart-col-price"><?php echo $item[0]['product_price']; ?></div>
                         <div class="cart-col cart-col-quantity">
-                            <input type="number" name="cart_quantity_<?php echo $singleItem['cart_id']; ?>" id="cart_quantity_<?php echo $singleItem['cart_id']; ?>"  value="<?php echo $singleItem["quantity"]; ?>">
+                            <input type="number" name="cart_quantity_<?php echo $singleItem['cart_id']; ?>" id="cart_quantity_<?php echo $singleItem['cart_id']; ?>"  value="<?php echo $singleItem["quantity"]; ?>" min="1">
                         </div>
                         <div class="cart-col cart-col-subtotal"><?php echo $subtotal; ?></div>
                         <div class="cart-col cart-col-action">

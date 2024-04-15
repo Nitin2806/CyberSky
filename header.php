@@ -1,10 +1,23 @@
 <?php 
 session_start();
+
 if(isset($_SESSION["userId"]))
 $userId=$_SESSION["userId"];
 else
-$userId=0;
+{
+    $userId=0;
+    if ((basename($_SERVER['PHP_SELF']) == 'index.php' || basename($_SERVER['PHP_SELF']) == 'login.php'))
+    {}
+    else
+    {
+        header("Location: login.php");
+        exit();
+    } 
+}
+
+
 include('connection.php'); 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
