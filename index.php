@@ -61,8 +61,8 @@
                     <img class="card-img-top item-image" alt="<?php echo $product['product_name'] ?>" src="images/<?php echo $product['product_image'] ?>">
 
                     <div class="card-body">
-                        <h5 class="card-title item-name"><?php echo $product['product_name'] ?></h5>
-                        <h6 class="card-subtitle mb-2 item-price">$<?php echo  $product['product_price'] ?></h6>
+                        <h2 class="card-title item-name"><?php echo $product['product_name'] ?></h2>
+                        <h3 class="card-subtitle mb-2 item-price">$<?php echo  $product['product_price'] ?></h3>
                         <p class="card-text item-desc"><?php echo $product['product_desc'] ?></p>
 
                         <?php

@@ -20,11 +20,9 @@
 
     if (isset($_GET['message']) && $_GET['message'] == 'registered') {
         $message = '<div class="alert">User Account Created. Please Login!</div>';
-    }
-    if (isset($_GET['message']) && $_GET['message'] == 'failed') {
+    } else if (isset($_GET['message']) && $_GET['message'] == 'failed') {
         $message = '<div class="alert">No such user or wrong password!</div>';
-    }
-    if (isset($_GET['message']) && $_GET['message'] == 'deleted') {
+    } else if (isset($_GET['message']) && $_GET['message'] == 'deleted') {
         $message = '<div class="alert">User Account has been deleted</div>';
     } else
         $message = '';
@@ -70,6 +68,7 @@
 
         <div class="hero">
             <h1>Login</h1>
+
         </div>
         <div class="area-light">
 
@@ -84,13 +83,13 @@
                     <div class="form-field">
                         <label for="username">Username:</label>
                         <input type="text" id="username" name="username" class="form-control">
-                        <div class="field-error">Enter the username</div>
+                        <div class="field-error"><?php echo $username_error; ?></div>
                     </div>
 
                     <div class="form-field">
                         <label for="password">Password:</label>
                         <input type="password" id="password" name="password" class="form-control">
-                        <div class="field-error">Enter the password</div>
+                        <div class="field-error"><?php echo $password_error; ?></div>
                     </div>
 
                     <div class="form-field button-field">
@@ -185,8 +184,7 @@
 
                     <div class="form-field">
                         <input type="hidden" id="type" name="type" value="signup">
-                        <?php
-                        ?>
+                        <?php echo $message; ?>
                     </div>
 
                     <div class="form-field">
