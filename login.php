@@ -114,7 +114,7 @@
                 
                 <div class="form-field button-field">
                     <button type="submit" id="submit_button" name="submit_button"  class="btn btn-orange">Login</button>
-                    <a class="btn btn-black" href="login.php?type=signup">Signup Instead?</a>
+                    <a class="btn btn-black" href="login.php?type=signup">Create an account?</a>
                 </div>
                 
             </form>
@@ -263,7 +263,7 @@
 
                 <div class="form-field button-field">
                     <button type="submit" id="submit_button" name="submit_button" class="btn btn-orange">Signup</button>
-                    <a class="btn btn-black" href="login.php?type=login">Login Instead?</a>
+                    <a class="btn btn-black" href="login.php?type=login">Login</a>
                 </div>
 
             </form>
